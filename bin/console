@@ -1,6 +1,12 @@
 #!/usr/bin/env php
 <?php
-
+use App\Singleton;
 require_once __DIR__ . '/../vendor/autoload.php';
 
-
+$s1 = \App\Singleton::getInstance();
+var_dump(\spl_object_id($s1));
+//$s2 = __clone($s1);
+//var_dump(\spl_object_id($s2));
+$serialized = \serialize($s1);
+$s3 = \unserialize($serialized);
+var_dump($s3->getId());
